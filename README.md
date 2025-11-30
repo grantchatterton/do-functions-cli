@@ -45,7 +45,6 @@ npx do-functions-cli create
 
 ## Planned CLI Flags
 
-- `--packages-dir <path>`: Set root packages directory (defaults to `./packages`).
 - `--function <package/name>`: Provide function identifier directly.
 - `--<language>`: Choose template language (e.g., `--javascript`, `--typescript`).
 - `--install` / `--no-install`: Control dependency installation step.
