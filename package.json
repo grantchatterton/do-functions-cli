@@ -1,0 +1,49 @@
+{
+  "name": "do-functions-cli",
+  "version": "1.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grantchatterton/do-functions-cli.git"
+  },
+  "author": "Grant Chatterton",
+  "license": "MIT",
+  "bin": {
+    "do-functions-cli": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepublishOnly": "npm run build",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^8.0.1",
+    "commander": "^14.0.2",
+    "fs-extra": "^11.3.2",
+    "ora": "^9.0.0",
+    "yaml": "^2.8.1",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^24.10.1",
+    "prettier": "^3.7.2",
+    "typescript": "^5.9.3"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "keywords": [
+    "functions",
+    "utility",
+    "typescript",
+    "cli",
+    "npm",
+    "do",
+    "digitalocean",
+    "serverless"
+  ]
+}
