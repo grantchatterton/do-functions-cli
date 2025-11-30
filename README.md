@@ -59,9 +59,9 @@ npx do-functions-cli create
 
 ```yaml
 packages:
-  - name: Package Name
+  - name: sample
     functions:
-      - name: sample/func1
+      - name: hello
         runtime: nodejs:18
         web: true
   ...
