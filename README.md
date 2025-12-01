@@ -47,7 +47,6 @@ npx do-functions-cli create
 
 ## Planned CLI Flags
 
-- `--function <package/name>`: Provide function identifier directly.
 - `--<language>`: Choose template language (e.g., `--javascript`, `--typescript`).
 - `--install` / `--no-install`: Control dependency installation step.
 - `--add-project` / `--no-add-project`: Control `project.yml` auto-update.

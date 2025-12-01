@@ -29,6 +29,7 @@ createCommand
   .description('create a new serverless function')
   .option('-y, --yes', 'skip all optional prompts and use defaults')
   .option('--packages-dir <dir>', 'specify the root packages directory')
+  .option('-f, --func <name>', 'specify the package/function name')
   .action(async (options) => {
     const parsedOptionsResult = CreateOptionsSchema.safeParse(options);
     if (!parsedOptionsResult.success) {
@@ -46,11 +47,11 @@ createCommand
         default: './packages',
       }));
 
-    const userFuncPath = await input({
+    const userFuncPath = parsedOptions.func || (await input({
       message: 'Enter the package/function name to create:',
       default: 'sample/hello',
       validate: validateFunctionName,
-    });
+    }));
 
     const [pkgName, funcName] = userFuncPath.split('/') as [string, string];
 
