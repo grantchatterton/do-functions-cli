@@ -28,8 +28,9 @@ program.parse(process.argv);
 process.on('uncaughtException', (error) => {
   if (error instanceof Error && error.name === 'ExitPromptError') {
     console.log('👋 until next time!');
+    process.exit(0);
   } else {
-    // Rethrow unknown errors for proper error handling and exit
-    throw error;
+    console.error(error);
+    process.exit(1);
   }
 });
