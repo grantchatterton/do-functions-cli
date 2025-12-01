@@ -5,6 +5,8 @@
 
 A CLI tool to streamline working with DigitalOcean Serverless Functions.
 
+### NOTE: This project has no affiliation with [do-functions](https://github.com/mrbrianevans/do-functions), but was heavily inspired by it. I will likely end up incorporating some of the features of that project into this one.
+
 ## Features
 
 - Create new function packages via an interactive `create` command
