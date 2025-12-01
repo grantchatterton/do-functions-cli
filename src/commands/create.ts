@@ -18,6 +18,8 @@ import ora from 'ora';
 import { scaffoldFunction, updateProjectConfig } from '../utils/util.js';
 import type { LanguageChoice, UpdateStatus } from '../utils/util.js';
 import { validateFunctionName } from '../utils/validators.js';
+import { CreateOptionsSchema } from '../schemas/createOptions.js';
+import * as z from "zod";
 
 // Promisify exec to use async/await syntax
 const exec = util.promisify(child_process.exec);
@@ -28,8 +30,17 @@ createCommand
   .option('-y, --yes', 'skip all optional prompts and use defaults')
   .option('--packages-dir <dir>', 'specify the root packages directory')
   .action(async (options) => {
+    const parsedOptionsResult = CreateOptionsSchema.safeParse(options);
+    if (!parsedOptionsResult.success) {
+      const prettyError = z.prettifyError(parsedOptionsResult.error);
+      console.log(prettyError);
+      return;
+    }
+
+    const parsedOptions = parsedOptionsResult.data;
+
     const userPackagesDir =
-      options.packagesDir ||
+      parsedOptions.packagesDir ||
       (await input({
         message: 'Enter the root function packages directory:',
         default: './packages',
