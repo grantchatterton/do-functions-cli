@@ -5,7 +5,7 @@
 
 A CLI tool for scaffolding [DigitalOcean Serverless Functions](https://docs.digitalocean.com/products/functions/). Quickly create new functions with JavaScript or TypeScript templates, install dependencies, and automatically update your `project.yml` configuration.
 
-> **Note:** This project is not affiliated with DigitalOcean or [do-functions](https://github.com/mrbrianevans/do-functions), but was inspired by the latter.
+> **Note:** This project is not affiliated with [DigitalOcean](https://digitalocean.com) or [do-functions](https://github.com/mrbrianevans/do-functions), but was inspired by the latter.
 
 ## Features
 
