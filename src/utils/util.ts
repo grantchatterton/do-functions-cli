@@ -1,17 +1,15 @@
 import fs from 'fs-extra';
 import * as path from 'node:path';
-import { DEFAULT_RUNTIME } from '../constants.js';
+import { fileURLToPath } from 'node:url';
+import YAML from 'yaml';
 import type { DOFunction } from '../schemas/doFunction.js';
 import { DOProjectYmlSchema } from '../schemas/doProjectYml.js';
-import YAML from 'yaml';
-import { fileURLToPath } from 'node:url';
-
-export type LanguageChoice = 'typescript' | 'javascript';
+import { functionTemplateService } from '../services/functionTemplateService.js';
 
 /**
  * Get the template directory for a function depending on language choice.
  */
-export function getTemplateDir(funcLanguage: LanguageChoice): string {
+export function getTemplateDir(funcLanguage: string): string {
   return path.join(
     fileURLToPath(new URL('../../', import.meta.url)),
     'templates',
@@ -23,7 +21,7 @@ export function getTemplateDir(funcLanguage: LanguageChoice): string {
 export type ScaffoldOptions = {
   targetDir: string;
   funcPath: string; // package/function
-  funcLanguage: LanguageChoice;
+  funcLanguage: string;
 };
 
 /**
@@ -61,10 +59,16 @@ export type UpdateResult = {
 export async function updateProjectConfig(
   projectYmlPath: string,
   pkgName: string,
-  funcName: string
+  funcName: string,
+  funcLanguage: string
 ): Promise<UpdateResult> {
   try {
-    const functionObj: DOFunction = { name: funcName, runtime: DEFAULT_RUNTIME, web: true };
+    const funcLanguageObj = functionTemplateService.getTemplateByDirName(funcLanguage);
+    if (!funcLanguageObj) {
+      throw new Error(`Unsupported function language: ${funcLanguage}`);
+    }
+
+    const functionObj: DOFunction = { name: funcName, runtime: funcLanguageObj.runtime, web: true };
 
     const exists = await fs.exists(projectYmlPath);
     if (!exists) {

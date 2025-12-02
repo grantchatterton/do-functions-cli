@@ -8,18 +8,21 @@
  * 4. Installing dependencies (optional)
  * 5. Adding the function to project.yml configuration (optional)
  */
-import { confirm, input, select } from '@inquirer/prompts';
-import { Command } from 'commander';
-import fs from 'fs-extra';
 import * as child_process from 'node:child_process';
 import * as path from 'node:path';
 import * as util from 'node:util';
+
+import { confirm, input, select } from '@inquirer/prompts';
+import { Command } from 'commander';
+import fs from 'fs-extra';
 import ora from 'ora';
-import { scaffoldFunction, updateProjectConfig } from '../utils/util.js';
-import type { LanguageChoice, UpdateStatus } from '../utils/util.js';
-import { validateFunctionName } from '../utils/validators.js';
+import * as z from 'zod';
+
 import { CreateOptionsSchema } from '../schemas/createOptions.js';
-import * as z from "zod";
+import { functionTemplateService } from '../services/functionTemplateService.js';
+import type { UpdateStatus } from '../utils/util.js';
+import { scaffoldFunction, updateProjectConfig } from '../utils/util.js';
+import { validateFunctionName } from '../utils/validators.js';
 
 // Promisify exec to use async/await syntax
 const exec = util.promisify(child_process.exec);
@@ -47,11 +50,13 @@ createCommand
         default: './packages',
       }));
 
-    const userFuncPath = parsedOptions.func || (await input({
-      message: 'Enter the package/function name to create:',
-      default: 'sample/hello',
-      validate: validateFunctionName,
-    }));
+    const userFuncPath =
+      parsedOptions.func ||
+      (await input({
+        message: 'Enter the package/function name to create:',
+        default: 'sample/hello',
+        validate: validateFunctionName,
+      }));
 
     const [pkgName, funcName] = userFuncPath.split('/') as [string, string];
 
@@ -67,14 +72,13 @@ createCommand
       }
     }
 
-    const funcLanguage = (await select({
+    const funcLanguage = await select({
       message: 'Choose a language for the function:',
-      choices: [
-        { name: 'JavaScript', value: 'javascript' },
-        { name: 'TypeScript', value: 'typescript' },
-      ],
-      default: 'javascript',
-    })) as LanguageChoice;
+      choices: functionTemplateService
+        .getTemplates()
+        .map((template) => ({ name: template.name, value: template.dirName })),
+      default: functionTemplateService.getDefaultTemplate().dirName,
+    });
 
     // Initialize a spinner to show progress to the user
     const spinner = ora(`Creating function '${userFuncPath}'...`).start();
@@ -131,7 +135,7 @@ createCommand
       } else {
         spinner.start('Updating project.yml configuration...');
 
-        const result = await updateProjectConfig(projectYmlPath, pkgName, funcName);
+        const result = await updateProjectConfig(projectYmlPath, pkgName, funcName, funcLanguage);
         const resultStatusMessageMap: Record<UpdateStatus, string> = {
           'created-new-config': `Created project.yml with package "${pkgName}" and function "${userFuncPath}"`,
           'added-package': `Added new package "${pkgName}" with function "${userFuncPath}" to project.yml`,
