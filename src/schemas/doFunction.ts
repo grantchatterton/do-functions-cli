@@ -5,9 +5,7 @@ import * as z from 'zod';
  */
 export const DOFunctionSchema = z.object({
   name: z.string(),
-  runtime: z
-    .string()
-    .optional(),
+  runtime: z.string().optional(),
   web: z.boolean().optional().default(true),
 });
 

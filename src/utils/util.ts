@@ -1,7 +1,9 @@
-import fs from 'fs-extra';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import fs from 'fs-extra';
 import YAML from 'yaml';
+
 import type { DOFunction } from '../schemas/doFunction.js';
 import { DOProjectYmlSchema } from '../schemas/doProjectYml.js';
 import { functionTemplateService } from '../services/functionTemplateService.js';

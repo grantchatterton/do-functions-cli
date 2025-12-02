@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import createCommand from './commands/create.js';
 import fs from 'fs-extra/esm';
+
+import createCommand from './commands/create.js';
 
 const packageJson = await fs.readJSON(new URL('../package.json', import.meta.url));
 const cliVersion = packageJson.version;
