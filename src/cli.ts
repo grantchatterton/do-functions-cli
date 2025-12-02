@@ -22,8 +22,7 @@ program.parse(process.argv);
 /**
  * Handle uncaught exceptions globally.
  *
- * ExitPromptError is thrown when a user cancels an interactive prompt,
- * so we handle it gracefully. Other errors are re-thrown for proper error reporting.
+ * ExitPromptError is thrown when a user cancels an interactive prompt.
  */
 process.on('uncaughtException', (error) => {
   if (error instanceof Error && error.name === 'ExitPromptError') {
