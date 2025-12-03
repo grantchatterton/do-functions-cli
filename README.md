@@ -103,12 +103,7 @@ esbuild ./index.js --bundle --platform=node --target=node18 --format=cjs --outfi
 tsc --noEmit && esbuild ./index.ts --bundle --platform=node --target=node18 --format=cjs --outfile=./dist/bundle.js --minify
 ```
 
-Run the build before deploying:
-
-```bash
-cd packages/api/hello
-npm run build
-```
+DigitalOcean automatically runs `npm run build` during deployment, so you don't need to build manually before deploying.
 
 ### The .include File
 
