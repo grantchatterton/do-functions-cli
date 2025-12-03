@@ -29,11 +29,11 @@ jobs:
       - name: Run linter
         run: npm run lint
 
-      - name: Build project
-        run: npm run build
-
       - name: Run formatter
         run: npm run format
+
+      - name: Build project
+        run: npm run build
 
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.4
