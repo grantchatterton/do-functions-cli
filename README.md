@@ -86,7 +86,7 @@ your-project/
 
 The generated function templates include [esbuild](https://esbuild.github.io/) for bundling your code. This ensures compatibility with DigitalOcean Functions by:
 
-- **Bundling all dependencies** — All `node_modules` are bundled into a single file (`dist/bundle.js`), eliminating the need to upload dependencies separately
+- **Bundling all dependencies** — All `node_modules` are bundled into a single file (`dist/bundle.js`)
 - **CommonJS output** — Code is transpiled to CommonJS format (`--format=cjs`) for compatibility with the DigitalOcean Functions runtime
 - **Node.js 18 targeting** — The bundle is optimized for Node.js 18 (`--target=node18`)
 - **Minification** — Output is minified to reduce file size and improve cold start times
