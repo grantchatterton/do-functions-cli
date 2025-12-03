@@ -82,6 +82,39 @@ your-project/
 └── project.yml                 # DigitalOcean project configuration
 ```
 
+## Bundling with esbuild
+
+The generated function templates include [esbuild](https://esbuild.github.io/) for bundling your code. This ensures compatibility with DigitalOcean Functions by:
+
+- **Bundling all dependencies** — All `node_modules` are bundled into a single file (`dist/bundle.js`), eliminating the need to upload dependencies separately
+- **CommonJS output** — Code is transpiled to CommonJS format (`--format=cjs`) for compatibility with the DigitalOcean Functions runtime
+- **Node.js 18 targeting** — The bundle is optimized for Node.js 18 (`--target=node18`)
+- **Minification** — Output is minified to reduce file size and improve cold start times
+
+### Build Script
+
+Each function includes a `build` script in `package.json`:
+
+```bash
+# JavaScript
+esbuild ./index.js --bundle --platform=node --target=node18 --format=cjs --outfile=./dist/bundle.js --minify
+
+# TypeScript (includes type checking)
+tsc --noEmit && esbuild ./index.ts --bundle --platform=node --target=node18 --format=cjs --outfile=./dist/bundle.js --minify
+```
+
+DigitalOcean automatically runs `npm run build` during deployment, so you don't need to build manually before deploying.
+
+### The .include File
+
+Each function contains a `.include` file that tells DigitalOcean which files to include in the deployed function. By default, it points to the bundled output:
+
+```
+dist/bundle.js
+```
+
+This means only the bundled file is deployed, keeping your function package small and fast.
+
 ## project.yml Configuration
 
 The CLI automatically manages your `project.yml` file:
