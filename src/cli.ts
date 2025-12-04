@@ -8,10 +8,7 @@ const packageJson = await fs.readJSON(new URL('../package.json', import.meta.url
 
 // Initialize the main CLI program
 const program = new Command();
-program
-  .name(packageJson.name)
-  .description(packageJson.description)
-  .version(packageJson.version);
+program.name(packageJson.name).description(packageJson.description).version(packageJson.version);
 
 // Register the 'create' command for creating new serverless functions
 program.addCommand(createCommand);
