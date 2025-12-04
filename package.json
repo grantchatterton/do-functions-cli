@@ -38,6 +38,7 @@
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.5.0",
     "jiti": "^2.6.1",
+    "npm-seo-optimizer": "^1.0.0",
     "prettier": "^3.7.2",
     "prettier-plugin-organize-imports": "^4.3.0",
     "typescript": "^5.9.3",
