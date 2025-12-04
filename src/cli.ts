@@ -5,14 +5,13 @@ import fs from 'fs-extra/esm';
 import createCommand from './commands/create.js';
 
 const packageJson = await fs.readJSON(new URL('../package.json', import.meta.url));
-const cliVersion = packageJson.version;
 
 // Initialize the main CLI program
 const program = new Command();
 program
-  .name('do-functions-cli')
-  .description('CLI tool for managing DigitalOcean serverless functions')
-  .version(cliVersion);
+  .name(packageJson.name)
+  .description(packageJson.description)
+  .version(packageJson.version);
 
 // Register the 'create' command for creating new serverless functions
 program.addCommand(createCommand);
