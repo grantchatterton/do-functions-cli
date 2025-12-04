@@ -1,13 +1,21 @@
 {
   "name": "do-functions-cli",
   "version": "1.4.0",
+  "description": "CLI tool for scaffolding DigitalOcean Serverless Functions with JavaScript and TypeScript templates, automatic dependency installation, and project.yml configuration",
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/grantchatterton/do-functions-cli.git"
   },
+  "homepage": "https://github.com/grantchatterton/do-functions-cli#readme",
+  "bugs": {
+    "url": "https://github.com/grantchatterton/do-functions-cli/issues"
+  },
   "author": "Grant Chatterton",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "bin": {
     "do-functions-cli": "dist/cli.js"
   },
@@ -38,7 +46,6 @@
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.5.0",
     "jiti": "^2.6.1",
-    "npm-seo-optimizer": "^1.0.0",
     "prettier": "^3.7.2",
     "prettier-plugin-organize-imports": "^4.3.0",
     "typescript": "^5.9.3",
@@ -49,13 +56,20 @@
     "templates"
   ],
   "keywords": [
-    "functions",
-    "utility",
-    "typescript",
-    "cli",
-    "npm",
-    "do",
     "digitalocean",
-    "serverless"
+    "serverless",
+    "functions",
+    "faas",
+    "cli",
+    "scaffold",
+    "generator",
+    "typescript",
+    "javascript",
+    "nodejs",
+    "cloud-functions",
+    "serverless-functions",
+    "do-functions",
+    "function-template",
+    "project-generator"
   ]
 }
