@@ -130,7 +130,7 @@ packages:
 
 ## Requirements
 
-- Node.js 18 or later
+- Node.js 20.12.0 or later
 - npm or compatible package manager
 
 ## Roadmap

@@ -14,7 +14,7 @@
   "author": "Grant Chatterton",
   "license": "MIT",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.12.0"
   },
   "bin": {
     "do-functions-cli": "dist/cli.js"

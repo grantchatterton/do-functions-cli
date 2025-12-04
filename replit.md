@@ -11,7 +11,7 @@ This is a CLI tool for managing DigitalOcean Serverless Functions. It streamline
 ## Project Architecture
 
 ### Tech Stack
-- **Language:** TypeScript (Node.js)
+- **Language:** TypeScript (Node.js 20.12.0+)
 - **CLI Framework:** Commander.js
 - **Interactive Prompts:** @inquirer/prompts
 - **File Operations:** fs-extra
@@ -65,6 +65,12 @@ node dist/cli.js create
 - Planned flags: `--function`, `--language`, `--install`, `--add-project`, `--dry-run`, `--verbose`
 
 ## Recent Changes
+
+- **December 4, 2025:** npm SEO optimization and Node.js compatibility verification
+  - Added description, homepage, bugs, and engines fields to package.json
+  - Expanded keywords from 8 to 15 for better npm discoverability
+  - Verified dependency compatibility - requires Node.js 20.12.0+ (not Node 18)
+  - Updated README.md and package.json to reflect correct Node version requirement
 
 - **December 4, 2025:** Completed project import to Replit
   - Reinstalled all npm dependencies
