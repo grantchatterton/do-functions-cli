@@ -1,7 +1,7 @@
 {
   "name": "do-functions-cli",
   "version": "1.4.0",
-  "description": "CLI tool for scaffolding DigitalOcean Serverless Functions with JavaScript and TypeScript templates, automatic dependency installation, and project.yml configuration",
+  "description": "CLI tool for scaffolding DigitalOcean Serverless Functions with JavaScript and TypeScript templates, automatic dependency installation, and project.yml configuration.",
   "type": "module",
   "repository": {
     "type": "git",
