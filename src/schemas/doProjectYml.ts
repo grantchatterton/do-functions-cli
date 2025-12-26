@@ -7,10 +7,15 @@ import { DOPackageSchema } from './doPackage.js';
  *
  * Properties:
  * - packages: Array of packages that make up the project (defaults to empty array)
+ *
+ * Uses .passthrough() to preserve custom properties (e.g., environment, targetNamespace)
+ * that may exist in the project.yml file
  */
-export const DOProjectYmlSchema = z.object({
-  packages: z.array(DOPackageSchema).optional().default([]),
-});
+export const DOProjectYmlSchema = z
+  .object({
+    packages: z.array(DOPackageSchema).optional().default([]),
+  })
+  .passthrough();
 
 /**
  * TypeScript type derived from the DOProjectYmlSchema
