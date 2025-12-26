@@ -58,6 +58,8 @@ node dist/cli.js --help
 node dist/cli.js create
 ```
 
+> **Note:** When installed globally or via npx, use the `dofcli` command (or `do-functions-cli` for the full command name).
+
 ## Roadmap
 
 - Non-interactive flags for commands
