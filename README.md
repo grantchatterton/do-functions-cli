@@ -22,15 +22,17 @@ A CLI tool for scaffolding [DigitalOcean Serverless Functions](https://docs.digi
 npm install -g do-functions-cli
 
 # Or use directly with npx
-npx do-functions-cli create
+npx dofcli create
 ```
+
+> **Note:** Both `dofcli` and `do-functions-cli` commands are available and work identically. The examples below use `dofcli` for brevity.
 
 ## Quick Start
 
 Create a new function interactively:
 
 ```bash
-do-functions-cli create
+dofcli create
 ```
 
 You'll be prompted to:
@@ -46,7 +48,7 @@ You'll be prompted to:
 ### Interactive Mode
 
 ```bash
-do-functions-cli create
+dofcli create
 ```
 
 ### Non-Interactive Mode
@@ -54,7 +56,7 @@ do-functions-cli create
 Use flags to skip prompts:
 
 ```bash
-do-functions-cli create --packages-dir ./packages --func api/hello --yes
+dofcli create --packages-dir ./packages --func api/hello --yes
 ```
 
 ### CLI Options
