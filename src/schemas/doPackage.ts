@@ -8,11 +8,15 @@ import { DOFunctionSchema } from './doFunction.js';
  * Properties:
  * - name: The package name (required, used for namespacing functions)
  * - functions: Array of functions belonging to this package (defaults to empty array)
+ *
+ * Uses .passthrough() to preserve custom properties that may exist in package configurations
  */
-export const DOPackageSchema = z.object({
-  name: z.string(),
-  functions: z.array(DOFunctionSchema).optional().default([]),
-});
+export const DOPackageSchema = z
+  .object({
+    name: z.string(),
+    functions: z.array(DOFunctionSchema).optional().default([]),
+  })
+  .passthrough();
 
 /**
  * TypeScript type derived from the DOPackageSchema
