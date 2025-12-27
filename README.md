@@ -21,8 +21,8 @@ A CLI tool for scaffolding [DigitalOcean Serverless Functions](https://docs.digi
 # Global installation
 npm install -g do-functions-cli
 
-# Or use directly with npx
-npx dofcli create
+# Local installation
+npm install -D do-functions-cli
 ```
 
 > **Note:** Both `dofcli` and `do-functions-cli` commands are available and work identically. The examples below use `dofcli` for brevity.
