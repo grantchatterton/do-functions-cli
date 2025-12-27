@@ -4,7 +4,7 @@ export const CreateOptionsSchema = z.object({
   packagesDir: z.string().optional(),
   func: z
     .string()
-    .regex(/^[a-zA-Z-]+\/[a-zA-Z-]+$/)
+    .regex(/^[a-zA-Z]([a-zA-Z-]*[a-zA-Z])?\/[a-zA-Z]([a-zA-Z-]*[a-zA-Z])?$/)
     .optional(),
 });
 
