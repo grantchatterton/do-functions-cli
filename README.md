@@ -25,9 +25,9 @@ npm install -g do-functions-cli
 npm install -D do-functions-cli
 ```
 
-> **Note:** Both `dofcli` and `do-functions-cli` commands are available and work identically. The examples below use `dofcli` for brevity.
-
 ## Quick Start
+
+> **Note:** Both `dofcli` and `do-functions-cli` commands are available and work identically. The examples below use `dofcli` for brevity.
 
 Create a new function interactively:
 
